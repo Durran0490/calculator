@@ -12,16 +12,18 @@ public class Calculator {
         String a = expression[0];
         String op1 = expression[1];
         String b = expression[2];
-        String op2 = expression[3];
-        String c = expression[4];
 
-        var result1 = calc(a, op1, b);
-        var result = calc (Double.toString(result1), op2, c);
+        var result = calc(a, op1, b);
+
+        if(expression.length ==5) {
+            String op2 = expression[3];
+            String c = expression[4];
+            result = calc(Double.toString(result), op2, c);
+        }
 
         return Double.toString(result);
 
     }
-
     double calc(String stra, String op, String strb) {
         double a = Double.parseDouble(stra);
         double b = Double.parseDouble(strb);
