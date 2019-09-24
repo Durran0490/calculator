@@ -8,24 +8,37 @@ package calculator;
 public class Calculator {
 
     public String calculate(String[] expression) {
-        double a = Double.parseDouble(expression[0]);
-        String op = expression[1];
-        double b = Double.parseDouble(expression[2]);
+
+        String a = expression[0];
+        String op1 = expression[1];
+        String b = expression[2];
+        String op2 = expression[3];
+        String c = expression[4];
+
+        var result1 = calc(a, op1, b);
+        var result = calc (Double.toString(result1), op2, c);
+
+        return Double.toString(result);
+
+    }
+
+    double calc(String stra, String op, String strb) {
+        double a = Double.parseDouble(stra);
+        double b = Double.parseDouble(strb);
         double result;
-            switch (op){
-                case "+": result = a+b;
+        switch (op){
+            case "+": result = a+b;
                 break;
-                case "-": result = a-b;
+            case "-": result = a-b;
                 break;
-                case "*": result = a*b;
+            case "*": result = a*b;
                 break;
-                case "/": result = a/b;
+            case "/": result = a/b;
                 break;
-                default: result = 0;
-            }
-            return Double.toString(result);
+            default: result = 0;
 
-
+        }
+        return result;
     }
 
 }
