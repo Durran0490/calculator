@@ -20,14 +20,21 @@ public class Calculator {
             String op2 = expression[3];
             String c = expression[4];
 
-            if (op2.equals("/")){
-                result = calc(b, op2, c);
-                result = calc(a, op1, Double.toString(result));
-            }else if (op2 == "*" ) {
-                result = calc(b, op2, c);
-                result = calc(a, op1, Double.toString(result));
-            }else{
-                result = calc(Double.toString(result), op2, c);
+            switch (op1) {
+                case "/":result = calc(Double.toString(result), op2, c);
+                break;
+                case "*":result = calc(Double.toString(result), op2, c);
+                break;
+                default:
+                    if (op2.equals("/")) {
+                        result = calc(b, op2, c);
+                        result = calc(a, op1, Double.toString(result));
+                    } else if (op2.equals("*")) {
+                        result = calc(b, op2, c);
+                        result = calc(a, op1, Double.toString(result));
+                    } else {
+                        result = calc(Double.toString(result), op2, c);
+                    }
             }
         }
 
